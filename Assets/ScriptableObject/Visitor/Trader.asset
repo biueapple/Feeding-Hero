@@ -16,5 +16,13 @@ MonoBehaviour:
   portrait: {fileID: 0}
   tradeType: 1
   targetItem: {fileID: 11400000, guid: b6d81b8268cbad74892bf74a25433928, type: 2}
-  quantity: 1
-  pricePerItem: 5
+  price: 5
+  successRange: 0
+  failRange: 2
+  chance: 2
+  meeting: "\uD14C\uC2A4\uD2B8 \uC544\uC774\uD15C \uD314\uAE30"
+  success: "\uC131\uACF5"
+  fail: "\uC2E4\uD328"
+  unsatisfactory:
+  - "\uB2E4\uC2DC"
+  - "\uB2E4\uC2DC \uC2DC\uB3C4"

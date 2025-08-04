@@ -8,6 +8,7 @@ public class ItemData : ScriptableObject
     public string itemID;
     public string displayName;
     public Sprite icon;
+    public ItemRarity itemRarity;
     public ItemType itemType;
 
     public List<ItemAttribute> itemAttributes;

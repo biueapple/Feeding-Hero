@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a510db69a46fbf3468441a65e8cf359e, type: 3}
+  m_Name: VisitorSeller
+  m_EditorClassIdentifier: 
+  visitorName: "\uC0C1\uC778"
+  portrait: {fileID: 0}
+  tradeType: 1
+  targetItem: {fileID: 11400000, guid: 2713bcd5937218c4a9b1ebb9b4777c28, type: 2}
+  quantity: 1
+  pricePerItem: 2
+  successRange: 1
+  failRange: 4
+  chance: 1
+  meeting: "\uAC10\uC790 \uD314\uAE30"
+  success: "\uC131\uACF5"
+  fail: "\uC2E4\uD328"
+  unsatisfactory:
+  - "\uB2E4\uC2DC"

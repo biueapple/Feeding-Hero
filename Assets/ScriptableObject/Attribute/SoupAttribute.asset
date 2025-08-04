@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b29403229d12424dbdfc60457f8d6ef, type: 3}
   m_Name: SoupAttribute
   m_EditorClassIdentifier: 
-  buffEffect: {fileID: 0}
+  buffEffect: {fileID: 11400000, guid: ccfdfc1bc4eb6ce4684c085e987f1976, type: 2}

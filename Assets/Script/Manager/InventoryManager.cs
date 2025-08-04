@@ -1,6 +1,18 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
+public enum InventoryType
+{
+    Player,
+    HeroChest,
+    HeroEquipment,
+    FoodChest,
+
+}
 
 public class InventoryManager : MonoBehaviour
 {
@@ -11,10 +23,11 @@ public class InventoryManager : MonoBehaviour
 
     //골드
     public int gold;
-    private Dictionary<ItemData, int> itemStacks = new();
+    //플레이어 인벤토리인데 크기 제한을 둘지는 아직 모르겠네
+    private List<ItemData> itemSlots = new ();
+    public ReadOnlyCollection<ItemData> ItemSlots => itemSlots.AsReadOnly();
 
-    //테스트용 장비
-    public ItemData testData;
+    public ItemData[] testItem;
 
     private void Awake()
     {
@@ -22,29 +35,32 @@ public class InventoryManager : MonoBehaviour
         else Destroy(gameObject);
 
         //장비 장착 테스트 코드
-        equipmentLocker[testData.itemAttributes.OfType<EquipmentAttribute>().FirstOrDefault().slotType] = testData;
-        Debug.Log(equipmentLocker.Count);
+        //equipmentLocker[testData.itemAttributes.OfType<EquipmentAttribute>().FirstOrDefault().slotType] = testData;
+
+        AddItem(testItem[0]);
+        AddItem(testItem[1]);
+        AddItem(testItem[2]);
+        AddItem(testItem[3]);
     }
 
-    public void AddItem(ItemData item, int amount)
+    public void AddItem(ItemData item)
     {
-        if (!itemStacks.ContainsKey(item))
-            itemStacks[item] = 0;
-
-        itemStacks[item] += amount;
+        itemSlots.Add(item);
     }
 
-    public bool SellItem(ItemData item, int amount)
+    public bool SellItem(ItemData item)
     {
-        if (!itemStacks.ContainsKey(item)) return false;
-        if (itemStacks[item] < amount) return false;
+        if(itemSlots.Contains(item))
+        {
+            itemSlots.Remove(item);
+            return true;
+        }
 
-        itemStacks[item] -= amount;
-        return true;
+        return false;
      }
 
     public IEnumerable<ItemData> GetItemByAttribute<T>() where T : ItemAttribute
     {
-        return itemStacks.Keys.Where(item => item.itemAttributes.OfType<T>().Any());
+        return itemSlots.Where(slot => slot != null && slot.itemAttributes.OfType<T>().Any());
     }
 }

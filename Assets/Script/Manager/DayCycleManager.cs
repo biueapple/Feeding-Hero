@@ -73,6 +73,9 @@ public class DayCycleManager : MonoBehaviour
     {
         SetPhase(DayPhase.DAY);
         ShopManager.Instance.StartDayPhase();
+
+
+        //거래시간은 나중에 실시간으로 할거라서 버튼은 그냥 테스트 용도로 남겨놓기
         yield return WaitForPlayerClick("다음으로");
     }
 
@@ -84,9 +87,11 @@ public class DayCycleManager : MonoBehaviour
         UIManager.Instance.FoodUI.Open();
 
         bool selected = false;
-        //evening 마다 콜백을 추가하니까 나중에 수정 필요함
-        UIManager.Instance.FoodUI.OnFoodChosen += () => selected = true;
+
+        Action action = () => selected = true;
+        UIManager.Instance.FoodUI.OnFoodChosen += action;
         yield return new WaitUntil(() => selected);
+        UIManager.Instance.FoodUI.OnFoodChosen -= action;
 
         yield return WaitForPlayerClick("다음으로");
     }

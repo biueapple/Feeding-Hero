@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: Soup
   displayName: "\uC218\uD504"
-  icon: {fileID: 0}
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemRarity: 0
   itemType: 2
   itemAttributes:
   - {fileID: 11400000, guid: 1959d9fe89bc2234491744077a49a2be, type: 2}

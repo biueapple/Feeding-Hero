@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: Steak
   displayName: "\uC2A4\uD14C\uC774\uD06C"
-  icon: {fileID: 0}
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  itemRarity: 3
   itemType: 2
   itemAttributes:
   - {fileID: 11400000, guid: de0d43fb517779d4cae52891b4e94f94, type: 2}

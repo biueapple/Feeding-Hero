@@ -10,11 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a510db69a46fbf3468441a65e8cf359e, type: 3}
-  m_Name: visitore
+  m_Name: VisitorBuyer
   m_EditorClassIdentifier: 
-  visitorName: "\uBAA8\uD5D8\uAC00"
+  visitorName: "\uC0C1\uC778"
   portrait: {fileID: 0}
   tradeType: 0
-  targetItem: {fileID: 11400000, guid: b6d81b8268cbad74892bf74a25433928, type: 2}
+  targetItem: {fileID: 11400000, guid: ed1fde39981eaf54b97453f31891edb9, type: 2}
   quantity: 1
-  pricePerItem: 10
+  pricePerItem: 30
+  successRange: 6
+  failRange: 10
+  chance: 3
+  meeting: "\uC2A4\uD14C\uC774\uD06C \uAD6C\uC785"
+  success: "\uC131\uACF5"
+  fail: "\uC2E4\uD328"
+  unsatisfactory:
+  - "\uB2E4\uC2DC"
+  - "\uB2E4\uC2DC \uC2DC\uB3C4"
+  - "\uB9C8\uC9C0\uB9C9 \uC2DC\uB3C4"

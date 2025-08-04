@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private FoodSelectionUI foodSelectionUI;
     public FoodSelectionUI FoodUI => foodSelectionUI;
+    [SerializeField]
+    private InventoryPanel inventoryPanel;
+    public InventoryPanel InventoryPanel => inventoryPanel;
 
     private void Awake()
     {
