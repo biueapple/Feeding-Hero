@@ -85,12 +85,12 @@ public class ShopManager : MonoBehaviour
     {
         if(currentRequest.TradeType == TradeType.BUY)
         {
-            InventoryManager.Instance.gold += currentRequest.price;
+            InventoryManager.Instance.Gold += currentRequest.price;
             Debug.Log($"판매 성공 {currentRequest.item.displayName} -> + {currentRequest.price}G");
         }
         else if(currentRequest.TradeType == TradeType.SELL)
         {
-            InventoryManager.Instance.gold -= currentRequest.price;
+            InventoryManager.Instance.Gold -= currentRequest.price;
             InventoryManager.Instance.AddItem(currentRequest.item);
             Debug.Log($"구매 완료: {currentRequest.item.displayName} -> -{currentRequest.price}G");
         }

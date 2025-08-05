@@ -15,6 +15,16 @@ public class HeroData
     public int DefaultDef => 10;
     public int DEF => def + DefaultDef;
 
-    public Dictionary<EquipmentSlotType, ItemData> equippedItems = new();
+    public Dictionary<EquipmentSlotType, EquipmentSlot> equippedItems = new ();
     public List<ActiveBuff> activeBuffs = new(); 
+
+    public HeroData()
+    {
+        EquipmentSlotType type;
+        for (int i = 0; i < 3; i++)
+        {
+            type = (EquipmentSlotType)i;
+            equippedItems[type] = new(type);
+        }
+    }
 }

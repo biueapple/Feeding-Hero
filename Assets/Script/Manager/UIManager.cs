@@ -1,9 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+    [SerializeField]
+    private Canvas canvas;
+    public Canvas Canvas => canvas;
 
     [SerializeField]
     private GameObject nextButton;
@@ -23,6 +28,13 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private InventoryPanel inventoryPanel;
     public InventoryPanel InventoryPanel => inventoryPanel;
+    [SerializeField]
+    private EquipmentPanel equipmentPanel;
+    public EquipmentPanel EquipmentPanel => equipmentPanel;
+
+    public DragSlot dragSlot;
+
+    private Stack<IClosableUI> stack = new();
 
     private void Awake()
     {
@@ -51,5 +63,42 @@ public class UIManager : MonoBehaviour
     public void OnNextButtonClicked()
     {
         onClick?.Invoke();
+    }
+
+
+    //uiopen°ú close
+    private void Update()
+    {
+        // ESC Å° ´­·¶À» ¶§ ¸Ç À§ UI ´Ý±â
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if(stack.TryPop(out IClosableUI result))
+                result.Close();
+        }
+    }
+
+    public void OpenUI(IClosableUI closableUI)
+    {
+        closableUI.Open();
+        stack.Push(closableUI);
+    }
+
+    public void CloseUI()
+    {
+        if(stack.TryPop(out IClosableUI result))
+        {
+            result.Close();
+        }
+    }
+
+    public void CloseAll()
+    {
+        while(stack.Count > 0)
+        {
+            if (stack.TryPop(out IClosableUI result))
+            {
+                result.Close();
+            }
+        }
     }
 }

@@ -20,15 +20,15 @@ public class HeroManager : MonoBehaviour
     {
         Debug.Log("øÎªÁ∞° ¿Â∫Ò∏¶ ¿Â¬¯«‘");
 
-        var looker = InventoryManager.Instance.equipmentLocker;
-
-        foreach(var slot in Enum.GetValues(typeof(EquipmentSlotType)))
+        var looker = InventoryManager.Instance.EquipmentLocker;
+        Debug.Log(looker);
+        foreach (EquipmentSlotType type in Enum.GetValues(typeof(EquipmentSlotType)))
         {
-            if(looker.TryGetValue((EquipmentSlotType)slot, out var item))
-            {
-                Hero.equippedItems[(EquipmentSlotType)slot] = item;
-                Debug.Log($"{slot} ΩΩ∑‘ø° '{item.displayName}' ¿Â¬¯µ ");
-            }
+            EquipmentSlot e = InventoryManager.Instance.GetEquipmentType(type);
+            Hero.equippedItems[type].Insert(e.ItemData);
+            Debug.Log($"{type} ΩΩ∑‘ø° '{e.ItemData?.displayName}' ¿Â¬¯µ ");
+            //eø°º≠ æ∆¿Ã≈€ ¡¶∞≈
+            e.Insert(null);
         }
 
         ApplyEquippedStats();
@@ -81,9 +81,12 @@ public class HeroManager : MonoBehaviour
         foreach (var kvp in Hero.equippedItems)
         {
             var item = kvp.Value;
-            var equipment = item.itemAttributes.OfType<EquipmentAttribute>().FirstOrDefault();
-            bonusAtk += equipment.atkBonus;
-            bonusDef += equipment.defBonus;
+            var equipment = item.ItemData?.itemAttributes.OfType<EquipmentAttribute>().FirstOrDefault();
+            if(equipment != null)
+            {
+                bonusAtk += equipment.atkBonus;
+                bonusDef += equipment.defBonus;
+            }
         }
 
         Debug.Log($"¿Â∫Ò ∫∏≥ Ω∫ Ω∫≈» -> ATK: {bonusAtk}, DEF: {bonusDef}");

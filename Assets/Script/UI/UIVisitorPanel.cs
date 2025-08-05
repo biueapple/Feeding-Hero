@@ -14,7 +14,7 @@ public class UIVisitorPanel : MonoBehaviour
     [SerializeField]
     private TMP_InputField inputField;
     [SerializeField]
-    private InventorySlot slotUI;
+    private ItemSlotUI slotUI;
 
     private void Start()
     {
@@ -63,7 +63,7 @@ public class UIVisitorPanel : MonoBehaviour
         if(slotUI.ItemData != null)
         {
             InventoryManager.Instance.AddItem(slotUI.ItemData);
-            slotUI.SetItem(null);
+            slotUI.Init(null);
         }
     }
 }

@@ -5,6 +5,6 @@ public enum EquipmentSlotType
 {
     WEAPON,
     ARMOR,
-    ACCESSSORY,
+    ACCESSORY,
 
 }
